@@ -1,0 +1,29 @@
+{
+  "name": "api-contact-fields.esigns.io",
+  "type": "module",
+  "scripts": {
+    "dev": "dotenvx run -- tsx watch src/index.ts",
+    "start": "dotenvx run -- node dist/src/index.js",
+    "build": "npx tsc",
+    "migrations:gen": "dotenvx run -- tsx node_modules/drizzle-kit/bin.cjs generate",
+    "migrations:apply": "dotenvx run -- drizzle-kit migrate",
+    "db:studio": "tsx node_modules/drizzle-kit/bin.cjs studio",
+    "fields:seed": "dotenvx run -- tsx seeders/seeder.ts",
+    "field-values:seed": "dotenvx run -- tsx seeders/field-values-seeder.ts"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.49.0",
+    "@hono/node-server": "^1.19.0",
+    "drizzle-orm": "^0.44.5",
+    "hono": "^4.9.5",
+    "pg": "^8.16.3",
+    "valibot": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@types/pg": "^8.15.5",
+    "drizzle-kit": "^0.31.4",
+    "tsx": "^4.7.1",
+    "typescript": "^5.8.3"
+  }
+}
