@@ -34,6 +34,7 @@ export class FieldsController {
                 "field_key",
                 "label",
                 "field_type",
+                "value"
             ];
             const fieldsResp = await getRecordsConditionally(custom_field_definitions, whereQuery, columnsToSelect);
             return sendResponse(c, 200, FIELDS_FETCHED, fieldsResp);

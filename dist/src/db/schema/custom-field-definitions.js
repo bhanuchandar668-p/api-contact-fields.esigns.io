@@ -7,8 +7,8 @@ export const custom_field_definitions = pgTable("custom_field_definitions", {
     label: varchar().notNull(),
     field_key: varchar().notNull(),
     field_type: varchar(),
-    options: jsonb(),
-    created_at: timestamp().defaultNow(),
+    value: jsonb(),
+    properties: jsonb().$default(() => ({})),
 }, (t) => [index("contact_type_idx").on(t.contact_type)]);
 export const fieldRelations = relations(custom_field_definitions, ({ many }) => ({
     custom_field_values: many(custom_field_values),

@@ -17,8 +17,8 @@ export const custom_field_definitions = pgTable(
     label: varchar().notNull(),
     field_key: varchar().notNull(),
     field_type: varchar(),
-    options: jsonb(),
-    created_at: timestamp().defaultNow(),
+    value: jsonb(),
+    properties: jsonb().$default(() => ({})),
   },
   (t) => [index("contact_type_idx").on(t.contact_type)]
 );

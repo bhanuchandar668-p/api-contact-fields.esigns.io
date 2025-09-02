@@ -68,6 +68,7 @@ export class FieldsController {
         "field_key",
         "label",
         "field_type",
+        "value"
       ];
 
       const fieldsResp = await getRecordsConditionally<CustomField>(

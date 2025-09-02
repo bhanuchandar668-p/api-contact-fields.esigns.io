@@ -7,7 +7,6 @@ const fieldsController = new FieldsController();
 
 fieldsRouter.post("/", fieldsController.addCustomFields);
 fieldsRouter.get("/", fieldsController.getAllCustomFieldsByContactType);
-
 fieldsRouter.get("/:id", fieldsController.getFieldsWithData);
 
 export default fieldsRouter;
