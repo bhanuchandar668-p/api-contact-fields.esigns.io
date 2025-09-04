@@ -1,1 +1,0 @@
-ALTER TABLE "custom_field_definitions" DROP CONSTRAINT "custom_field_definitions_contact_type_unique";

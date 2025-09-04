@@ -9,7 +9,9 @@
     "migrations:apply": "dotenvx run -- drizzle-kit migrate",
     "db:studio": "tsx node_modules/drizzle-kit/bin.cjs studio",
     "fields:seed": "dotenvx run -- tsx seeders/seeder.ts",
-    "field-values:seed": "dotenvx run -- tsx seeders/field-values-seeder.ts"
+    "field-values:seed": "dotenvx run -- tsx seeders/field-values-seeder.ts",
+    "contacts:seed": "dotenvx run -- tsx seeders/seeder2.ts",
+    "contacts-data:seed": "dotenvx run -- tsx seeders/contacts-data-seeder.ts"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.49.0",
@@ -20,6 +22,7 @@
     "valibot": "^1.1.0"
   },
   "devDependencies": {
+    "@ngneat/falso": "^8.0.2",
     "@types/node": "^20.11.17",
     "@types/pg": "^8.15.5",
     "drizzle-kit": "^0.31.4",

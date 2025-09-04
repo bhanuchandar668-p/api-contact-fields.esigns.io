@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1756787742849,
-      "tag": "0000_lazy_pandemic",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1756787789503,
-      "tag": "0001_spooky_northstar",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1756796228701,
-      "tag": "0002_rare_captain_cross",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1756798444062,
-      "tag": "0003_chief_machine_man",
+      "when": 1756989069710,
+      "tag": "0000_silent_catseye",
       "breakpoints": true
     }
   ]
