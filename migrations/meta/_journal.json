@@ -15,6 +15,13 @@
       "when": 1757045122813,
       "tag": "0001_lovely_spiral",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1757047462459,
+      "tag": "0002_equal_johnny_storm",
+      "breakpoints": true
     }
   ]
 }
