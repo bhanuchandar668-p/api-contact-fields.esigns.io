@@ -11,6 +11,7 @@ import {
   type ContactField,
 } from "../db/schema/contact-fields.js";
 import type { WhereQueryData } from "../types/db.types.js";
+import { makeSlug } from "../utils/app-utils.js";
 
 export class FieldsController {
   addFields = async (c: Context) => {
@@ -18,6 +19,10 @@ export class FieldsController {
       const reqData = await c.req.json();
 
       const fields = reqData.fields;
+
+      for (const field of fields) {
+        field.field_key = makeSlug(field.label);
+      }
 
       await saveRecords<ContactField>(contact_fields, fields);
 

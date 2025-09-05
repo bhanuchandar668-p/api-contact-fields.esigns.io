@@ -2,11 +2,15 @@ import { validateReq } from "../validations/validate-req.js";
 import { sendResponse } from "../utils/resp-utils.js";
 import { getRecordsConditionally, saveRecords, } from "../services/db/base-db-service.js";
 import { contact_fields, } from "../db/schema/contact-fields.js";
+import { makeSlug } from "../utils/app-utils.js";
 export class FieldsController {
     addFields = async (c) => {
         try {
             const reqData = await c.req.json();
             const fields = reqData.fields;
+            for (const field of fields) {
+                field.field_key = makeSlug(field.label);
+            }
             await saveRecords(contact_fields, fields);
             return sendResponse(c, 201, "Fields added successfully");
         }
