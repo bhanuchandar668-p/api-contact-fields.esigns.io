@@ -1,5 +1,10 @@
 import type db from "../db/db-connection.js";
 import type {
+  ContactField,
+  ContactFieldsTable,
+  NewContactField,
+} from "../db/schema/contact-fields.js";
+import type {
   CustomField,
   CustomFieldsTable,
   NewCustomField,
@@ -10,13 +15,22 @@ import type {
   NewCustomFieldValue,
 } from "../db/schema/custom-field-values.js";
 
-export type DBTable = CustomFieldsTable | CustomFieldValuesTable;
+export type DBTable =
+  | CustomFieldsTable
+  | CustomFieldValuesTable
+  | ContactFieldsTable;
 
-export type DBTableRow = CustomField | CustomFieldValue;
+export type DBTableRow = CustomField | CustomFieldValue | ContactField;
 
-export type DBNewRecord = NewCustomField | NewCustomFieldValue;
+export type DBNewRecord =
+  | NewCustomField
+  | NewCustomFieldValue
+  | NewContactField;
 
-export type DBNewRecords = NewCustomField[] | NewCustomFieldValue[];
+export type DBNewRecords =
+  | NewCustomField[]
+  | NewCustomFieldValue[]
+  | NewContactField[];
 
 export type DBTableColumns<T extends DBTableRow> = keyof T;
 

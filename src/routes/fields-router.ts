@@ -5,8 +5,7 @@ const fieldsRouter = new Hono();
 
 const fieldsController = new FieldsController();
 
-fieldsRouter.post("/", fieldsController.addCustomFields);
-fieldsRouter.get("/", fieldsController.getAllCustomFieldsByContactType);
-fieldsRouter.get("/:id", fieldsController.getFieldsWithData);
+fieldsRouter.post("/", fieldsController.addFields);
+fieldsRouter.get("/:id", fieldsController.getFieldsByResourceId);
 
 export default fieldsRouter;
