@@ -20,8 +20,14 @@ export class FieldsController {
 
       const fields = reqData.fields;
 
+      const resourceId = reqData.resource_id;
+
+      const ownerId = reqData.owner_id;
+
       for (const field of fields) {
         field.field_key = makeSlug(field.label);
+        field.resource_id = resourceId;
+        field.owner_id = ownerId;
       }
 
       await saveRecords<ContactField>(contact_fields, fields);

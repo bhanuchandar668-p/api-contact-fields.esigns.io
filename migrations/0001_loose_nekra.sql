@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "user_idx" ON "contact_fields" USING btree ("resource_id","user_id");

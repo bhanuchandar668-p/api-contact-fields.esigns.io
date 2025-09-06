@@ -4,33 +4,14 @@ import type {
   ContactFieldsTable,
   NewContactField,
 } from "../db/schema/contact-fields.js";
-import type {
-  CustomField,
-  CustomFieldsTable,
-  NewCustomField,
-} from "../db/schema/custom-field-definitions.js";
-import type {
-  CustomFieldValue,
-  CustomFieldValuesTable,
-  NewCustomFieldValue,
-} from "../db/schema/custom-field-values.js";
 
-export type DBTable =
-  | CustomFieldsTable
-  | CustomFieldValuesTable
-  | ContactFieldsTable;
+export type DBTable = ContactFieldsTable;
 
-export type DBTableRow = CustomField | CustomFieldValue | ContactField;
+export type DBTableRow = ContactField;
 
-export type DBNewRecord =
-  | NewCustomField
-  | NewCustomFieldValue
-  | NewContactField;
+export type DBNewRecord = NewContactField;
 
-export type DBNewRecords =
-  | NewCustomField[]
-  | NewCustomFieldValue[]
-  | NewContactField[];
+export type DBNewRecords = NewContactField[];
 
 export type DBTableColumns<T extends DBTableRow> = keyof T;
 
