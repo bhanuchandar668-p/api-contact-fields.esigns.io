@@ -1,6 +1,8 @@
 import { randFirstName, randLastName, randEmail, randAddress, randPhoneNumber, randCompanyName, randJobTitle, randDepartment, randCity, randState, randZipCode, randCountry, randPastDate, randFutureDate, randUserName, randUrl, randSkill, randQuote, randJobDescriptor, randJobArea, } from "@ngneat/falso";
+// @ts-ignore
 import { contacts } from "../src/db/schema/contacts.js";
 import seederDB from "./seeder-db.js";
+// @ts-ignore
 import { contacts_data } from "../src/db/schema/contacts-data.js";
 // Define meaningful field keys and labels
 const BASE_FIELDS = [

@@ -6,6 +6,6 @@ const fieldsRouter = new Hono();
 const fieldsController = new FieldsController();
 
 fieldsRouter.post("/", fieldsController.addFields);
-fieldsRouter.get("/", fieldsController.getFieldsByResourceId);
+fieldsRouter.get("/:id", fieldsController.getFieldsByResourceId);
 
 export default fieldsRouter;

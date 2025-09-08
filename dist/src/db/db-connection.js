@@ -1,8 +1,7 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import pg from "pg";
 import fs from "node:fs";
-import * as custom_field_definitions from "./schema/custom-field-definitions.js";
-import * as custom_field_values from "./schema/custom-field-values.js";
+import * as contact_fields from "./schema/contact-fields.js";
 import { dbConfig } from "../config/db-config.js";
 const { Pool } = pg;
 const dbClient = new Pool({
@@ -18,8 +17,7 @@ const dbClient = new Pool({
 });
 const db = drizzle(dbClient, {
     schema: {
-        ...custom_field_definitions,
-        ...custom_field_values,
+        ...contact_fields,
     },
 });
 export default db;

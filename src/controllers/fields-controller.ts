@@ -49,7 +49,7 @@ export class FieldsController {
         "field_key",
         "label",
         "value",
-      ];
+      ] as const;
 
       const whereQuery: WhereQueryData<ContactField> = {
         columns: ["resource_id"],
@@ -63,6 +63,16 @@ export class FieldsController {
       );
 
       return sendResponse(c, 200, "Fields fetched successfully", respData);
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  addFieldsWithValues = async (c: Context) => {
+    try {
+      const reqData = await c.req.json();
+
+      return sendResponse(c, 201, "Fields added successfully");
     } catch (err) {
       throw err;
     }

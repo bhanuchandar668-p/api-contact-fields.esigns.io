@@ -8,8 +8,12 @@ export class FieldsController {
         try {
             const reqData = await c.req.json();
             const fields = reqData.fields;
+            const resourceId = reqData.resource_id;
+            const ownerId = reqData.owner_id;
             for (const field of fields) {
                 field.field_key = makeSlug(field.label);
+                field.resource_id = resourceId;
+                field.owner_id = ownerId;
             }
             await saveRecords(contact_fields, fields);
             return sendResponse(c, 201, "Fields added successfully");
@@ -35,6 +39,15 @@ export class FieldsController {
             };
             const respData = await getRecordsConditionally(contact_fields, whereQuery, columnsToSelect);
             return sendResponse(c, 200, "Fields fetched successfully", respData);
+        }
+        catch (err) {
+            throw err;
+        }
+    };
+    addFieldsWithValues = async (c) => {
+        try {
+            const reqData = await c.req.json();
+            return sendResponse(c, 201, "Fields added successfully");
         }
         catch (err) {
             throw err;
