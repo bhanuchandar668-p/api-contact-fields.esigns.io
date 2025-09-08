@@ -1,0 +1,1 @@
+ALTER TABLE "contact_fields" ADD COLUMN "order" integer;

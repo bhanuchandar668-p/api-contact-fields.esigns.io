@@ -1,4 +1,5 @@
 import {
+  integer,
   jsonb,
   pgTable,
   serial,
@@ -17,6 +18,7 @@ export const contact_fields = pgTable(
     field_type: varchar(),
     field_key: varchar().notNull(),
     label: varchar(),
+    order: integer(),
     properties: jsonb().$default(() => ({})),
     value: jsonb(),
     created_at: timestamp().notNull().defaultNow(),

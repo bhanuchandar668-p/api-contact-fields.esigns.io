@@ -7,5 +7,6 @@ const fieldsController = new FieldsController();
 
 fieldsRouter.post("/", fieldsController.addFields);
 fieldsRouter.get("/:id", fieldsController.getFieldsByResourceId);
+fieldsRouter.patch("/:id", fieldsController.updateFieldsByResourceId);
 
 export default fieldsRouter;

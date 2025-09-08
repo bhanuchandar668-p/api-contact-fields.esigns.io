@@ -15,8 +15,6 @@ export class FieldsController {
                 field.resource_id = resourceId;
                 field.owner_id = ownerId;
             }
-            // deleteExisting Fields
-            await deleteRecordsByAColumnValue(contact_fields, "resource_id", resourceId);
             await saveRecords(contact_fields, fields);
             return sendResponse(c, 201, "Fields added successfully");
         }
@@ -33,6 +31,7 @@ export class FieldsController {
                 "field_type",
                 "field_key",
                 "label",
+                "order",
                 "value",
                 "properties",
             ];
@@ -40,8 +39,30 @@ export class FieldsController {
                 columns: ["resource_id"],
                 values: [resourceId],
             };
-            const respData = await getRecordsConditionally(contact_fields, whereQuery, columnsToSelect);
+            const orderBy = {
+                columns: ["order"],
+                values: ["asc"],
+            };
+            const respData = await getRecordsConditionally(contact_fields, whereQuery, columnsToSelect, orderBy);
             return sendResponse(c, 200, "Fields fetched successfully", respData);
+        }
+        catch (err) {
+            throw err;
+        }
+    };
+    updateFieldsByResourceId = async (c) => {
+        try {
+            const resourceId = c.req.param("id");
+            const reqData = await c.req.json();
+            const fields = reqData.fields;
+            for (const field of fields) {
+                field.field_key = makeSlug(field.label);
+                field.resource_id = resourceId;
+                field.owner_id = reqData.owner_id;
+            }
+            await deleteRecordsByAColumnValue(contact_fields, "resource_id", resourceId);
+            await saveRecords(contact_fields, fields);
+            return sendResponse(c, 201, "Fields updated successfully");
         }
         catch (err) {
             throw err;

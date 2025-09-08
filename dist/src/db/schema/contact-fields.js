@@ -1,4 +1,4 @@
-import { jsonb, pgTable, serial, timestamp, uniqueIndex, varchar, } from "drizzle-orm/pg-core";
+import { integer, jsonb, pgTable, serial, timestamp, uniqueIndex, varchar, } from "drizzle-orm/pg-core";
 export const contact_fields = pgTable("contact_fields", {
     id: serial().primaryKey(),
     resource_id: varchar().notNull(),
@@ -7,6 +7,7 @@ export const contact_fields = pgTable("contact_fields", {
     field_type: varchar(),
     field_key: varchar().notNull(),
     label: varchar(),
+    order: integer(),
     properties: jsonb().$default(() => ({})),
     value: jsonb(),
     created_at: timestamp().notNull().defaultNow(),
