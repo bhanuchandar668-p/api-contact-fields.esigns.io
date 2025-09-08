@@ -3,6 +3,7 @@ import { validateReq } from "../validations/validate-req.js";
 
 import { sendResponse } from "../utils/resp-utils.js";
 import {
+  deleteRecordsByAColumnValue,
   getRecordsConditionally,
   saveRecords,
 } from "../services/db/base-db-service.js";
@@ -30,6 +31,13 @@ export class FieldsController {
         field.owner_id = ownerId;
       }
 
+      // deleteExisting Fields
+      await deleteRecordsByAColumnValue(
+        contact_fields,
+        "resource_id",
+        resourceId
+      );
+
       await saveRecords<ContactField>(contact_fields, fields);
 
       return sendResponse(c, 201, "Fields added successfully");
@@ -49,6 +57,7 @@ export class FieldsController {
         "field_key",
         "label",
         "value",
+        "properties",
       ] as const;
 
       const whereQuery: WhereQueryData<ContactField> = {

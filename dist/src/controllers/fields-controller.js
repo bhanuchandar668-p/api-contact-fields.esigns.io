@@ -1,6 +1,6 @@
 import { validateReq } from "../validations/validate-req.js";
 import { sendResponse } from "../utils/resp-utils.js";
-import { getRecordsConditionally, saveRecords, } from "../services/db/base-db-service.js";
+import { deleteRecordsByAColumnValue, getRecordsConditionally, saveRecords, } from "../services/db/base-db-service.js";
 import { contact_fields, } from "../db/schema/contact-fields.js";
 import { makeSlug } from "../utils/app-utils.js";
 export class FieldsController {
@@ -15,6 +15,8 @@ export class FieldsController {
                 field.resource_id = resourceId;
                 field.owner_id = ownerId;
             }
+            // deleteExisting Fields
+            await deleteRecordsByAColumnValue(contact_fields, "resource_id", resourceId);
             await saveRecords(contact_fields, fields);
             return sendResponse(c, 201, "Fields added successfully");
         }
@@ -32,6 +34,7 @@ export class FieldsController {
                 "field_key",
                 "label",
                 "value",
+                "properties",
             ];
             const whereQuery = {
                 columns: ["resource_id"],
